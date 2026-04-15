@@ -3,16 +3,84 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Business Assessment</title>
+        <title>SBDC Business Assessment Tool</title>
         <link rel="stylesheet" href="./styles.css" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div id="app">
+        <!-- Landing Page -->
+        <div id="landingPage" class="landing-page">
+            <div class="landing-container">
+                <header class="landing-header">
+                    <img src="image 2.png" alt="SBDC logo" class="landing-logo">
+                    <h1 class="landing-title">Business Assessment Tool</h1>
+                    <p class="landing-subtitle">A comprehensive evaluation to help you understand your business strengths and identify growth opportunities</p>
+                </header>
+
+                <main class="landing-content">
+                    <div class="landing-section">
+                        <h2>What You'll Get</h2>
+                        <div class="benefits-grid">
+                            <div class="benefit-card">
+                                <div class="benefit-icon">📊</div>
+                                <h3>Personalized Assessment</h3>
+                                <p>Get insights tailored to your specific business situation and current challenges</p>
+                            </div>
+                            <div class="benefit-card">
+                                <div class="benefit-icon">🎯</div>
+                                <h3>Priority Areas</h3>
+                                <p>Identify which business areas need your immediate attention for maximum impact</p>
+                            </div>
+                            <div class="benefit-card">
+                                <div class="benefit-icon">📋</div>
+                                <h3>Actionable Recommendations</h3>
+                                <p>Receive specific, practical steps you can take to improve your business</p>
+                            </div>
+                            <div class="benefit-card">
+                                <div class="benefit-icon">📄</div>
+                                <h3>Downloadable Report</h3>
+                                <p>Get a comprehensive PDF report with your results and recommendations</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="landing-section assessment-info">
+                        <h2>Assessment Details</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <strong>Time Required:</strong> 15-20 minutes
+                            </div>
+                            <div class="info-item">
+                                <strong>Questions:</strong> Approximately 60 questions across 6 business areas
+                            </div>
+                            <div class="info-item">
+                                <strong>Smart Features:</strong> Skip sections that don't apply to your business
+                            </div>
+                            <div class="info-item">
+                                <strong>Privacy:</strong> Your responses are processed securely and confidentially
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="landing-cta">
+                        <button id="startAssessmentBtn" class="btn-cta">Start Your Assessment</button>
+                        <p class="cta-note">✓ Free assessment ✓ Instant results ✓ No registration required</p>
+                    </div>
+                </main>
+
+                <footer class="landing-footer">
+                    <p>Powered by Wisconsin Small Business Development Center (SBDC) and UW–Madison Tech Exploration Lab</p>
+                </footer>
+            </div>
+        </div>
+
+        <!-- Assessment Application (Initially Hidden) -->
+        <div id="app" class="hidden">
             <aside class="sidebar" aria-label="Sections">
                 <div class="brand">
-                    
+
                 </div>
                 <nav id="sectionList" class="section-list" role="navigation"></nav>
                 <div style="display: flex; justify-content: center;">
@@ -50,7 +118,7 @@
                     <div class="submit-wrap">
                         <span id="submitStatus" class="muted"></span>
                         <button id="submitBtn" class="btn success" type="button">Submit</button>
-                        
+
                     </div>
                 </footer>
             </main>
