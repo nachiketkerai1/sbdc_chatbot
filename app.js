@@ -7,7 +7,8 @@
     let answers = {};
     let areaNotes = {};
     let prefilled = null;
-    let lastAssessmentResult = null; 
+    let lastAssessmentResult = null;
+    let shouldStartAssessment = false; 
     const assessmentFocusDefinitions = {
         "Economic Uncertainty": "The economy or market conditions are changing, and I’m unsure how it will impact my business.",
         "Crisis or Setback": "Something urgent or unexpected happened, and I need to stabilize my business quickly.",
@@ -34,6 +35,9 @@
     const submitBtn = document.getElementById("submitBtn");
     const submitStatus = document.getElementById("submitStatus");
     const resetBtn = document.getElementById("resetBtn");
+    const startAssessmentBtn = document.getElementById("startAssessmentBtn");
+    const landingPage = document.getElementById("landingPage");
+    const appContainer = document.getElementById("app");
 
     const storageKey = "assessment_answers_v1";
 
@@ -463,19 +467,54 @@
     });
 
     resetBtn.addEventListener("click", () => {
-        if (confirm("Erase all answers?")) {
+        if (confirm("Erase all answers and return to start?")) {
             answers = {};
             areaNotes = {};
             saveLocal();
             lastAssessmentResult = null;
-    
+
             setAssessmentDisabled(false);
             questionArea.classList.remove("hidden");
             document.getElementById("results").classList.add("hidden");
-    
+
+            // Return to landing page
+            showLandingPage();
+            currentIndex = 0;
             updateUI();
         }
     });
+
+    // Landing page functionality
+    function showLandingPage() {
+        landingPage.classList.remove("hidden");
+        appContainer.classList.add("hidden");
+    }
+
+    function showAssessment() {
+        landingPage.classList.add("hidden");
+        appContainer.classList.remove("hidden");
+    }
+
+    startAssessmentBtn.addEventListener("click", () => {
+        shouldStartAssessment = true;
+        showAssessment();
+        // Ensure the assessment is properly initialized and shows the first question
+        if (data.flat.length > 0) {
+            currentIndex = 0;
+            updateUI();
+        } else {
+            // If data isn't loaded yet, show loading and wait
+            questionArea.innerHTML = '<div class="loading">Loading questions...</div>';
+            // Boot will handle showing the first question once data is loaded
+        }
+    });
+
+    // Check if user has already started assessment
+    function shouldShowLanding() {
+        // Show landing page if no answers saved or user explicitly wants to restart
+        const savedData = loadLocal();
+        return Object.keys(savedData.answers).length === 0 && Object.keys(savedData.areaNotes).length === 0;
+    }
 
     function setAssessmentDisabled(disabled) {
         prevBtn.disabled = disabled;
@@ -725,10 +764,23 @@
                 } catch {}
             }
 
-            updateUI();
+            // Determine whether to show landing page or assessment
+            if (shouldStartAssessment) {
+                // User clicked start from landing page
+                showAssessment();
+                currentIndex = 0;
+                updateUI();
+            } else if (shouldShowLanding()) {
+                showLandingPage();
+            } else {
+                showAssessment();
+                updateUI();
+            }
 
         } catch (err) {
             console.error(err);
+            // On error, show landing page
+            showLandingPage();
         }
     }
 
