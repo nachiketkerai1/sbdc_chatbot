@@ -123,7 +123,7 @@ body {
 .tile .value { font-weight: 700; font-size: 16px; }
 .tile .label { font-size: 13px; color: var(--muted); }
 
-
+/* Skip section functionality */
 .tile.skip-option {
     border-color: #dc2626;
     background: #fef2f2;
@@ -353,4 +353,243 @@ body {
     padding: 10px 14px;
     margin-bottom: 10px;
     border-radius: 8px;
+}
+
+/* ── Landing Page ──────────────────────────────────────────────────────── */
+.landing-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.landing-container {
+    max-width: 1000px;
+    width: 100%;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+    overflow: hidden;
+}
+
+.landing-header {
+    text-align: center;
+    padding: 48px 48px 24px 48px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+}
+
+.landing-logo {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 24px;
+}
+
+.landing-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+}
+
+.landing-subtitle {
+    font-size: 18px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landing-content {
+    padding: 48px;
+}
+
+.landing-section {
+    margin-bottom: 48px;
+}
+
+.landing-section h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 24px 0;
+    text-align: center;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.benefit-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+}
+
+.benefit-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+.benefit-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 12px 0;
+}
+
+.benefit-card p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.area-tag {
+    background: #eef2ff;
+    color: var(--primary);
+    border: 1px solid #c7d2fe;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.assessment-info {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 32px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.info-item {
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.5;
+}
+
+.info-item strong {
+    color: #0f172a;
+}
+
+.landing-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-cta {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 18px 48px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+    margin-bottom: 16px;
+    display: inline-block;
+}
+
+.btn-cta:hover {
+    background: var(--primary-700);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.btn-cta:active {
+    transform: translateY(-1px);
+}
+
+.cta-note {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+}
+
+.landing-footer {
+    background: #f8fafc;
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    text-align: center;
+}
+
+.landing-footer p {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* Hide/show classes */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive design for landing page */
+@media (max-width: 768px) {
+    .landing-page {
+        padding: 16px;
+    }
+
+    .landing-header {
+        padding: 32px 24px 16px 24px;
+    }
+
+    .landing-content {
+        padding: 32px 24px;
+    }
+
+    .landing-title {
+        font-size: 28px;
+    }
+
+    .landing-subtitle {
+        font-size: 16px;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .areas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .assessment-info {
+        padding: 24px;
+    }
+
+    .landing-footer {
+        padding: 16px 24px;
+    }
 }
